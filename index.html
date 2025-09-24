@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pro Personal Info Form</title>
+<style>
+  :root {
+    --primary-color: #0b79c1;
+    --bg-color: #f4f7f8;
+    --text-color: #333;
+    --card-bg: #fff;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+  }
+
+  body.dark {
+    --bg-color: #1e1e1e;
+    --text-color: #eee;
+    --card-bg: #2b2b2b;
+  }
+
+  header, footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--primary-color);
+    color: white;
+  }
+
+  main {
+    max-width: 900px;
+    margin: 20px auto;
+    background: var(--card-bg);
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+  }
+
+  h1 {
+    margin-top: 0;
+  }
+
+  fieldset {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  legend {
+    font-weight: bold;
+    padding: 0 10px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  input[type="radio"], input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+  }
+
+  .flex-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .flex-row > div {
+    flex: 1;
+    min-width: 150px;
+  }
+
+  button {
+    background: var(--primary-color);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+
+  button:hover {
+    background: #095a87;
+    transform: scale(1.05);
+  }
+
+  .dark-toggle {
+    float: right;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+
+  .output {
+    margin-top: 20px;
+    border-top: 2px dashed #ccc;
+    padding-top: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  table, th, td {
+    border: 1px solid #ccc;
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: left;
+  }
+
+  img.preview {
+    max-width: 100px;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Professional Personal Info Form</h1>
+</header>
+
+<main>
+  <span class="dark-toggle" id="darkToggle">🌙 Dark Mode</span>
+  <form id="proForm">
+    <!-- Personal Info -->
+    <fieldset>
+      <legend>Personal Information</legend>
+      <div class="flex-row">
+        <div>
+          <label for="fullname">Full Name</label>
+          <input type="text" id="fullname" name="fullname" placeholder="John Doe" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="john@example.com" required>
+        </div>
+      </div>
+
+      <div class="flex-row">
+        <div>
+          <label for="age">Age</label>
+          <input type="number" id="age" name="age" min="0" max="120" required>
+        </div>
+        <div>
+          <label>Gender</label>
+          <input type="radio" id="male" name="gender" value="Male" required> <label for="male">Male</label>
+          <input type="radio" id="female" name="gender" value="Female"> <label for="female">Female</label>
+          <input type="radio" id="other" name="gender" value="Other"> <label for="other">Other</label>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Contact -->
+    <fieldset>
+      <legend>Contact & Links</legend>
+      <label for="phone">Phone</label>
+      <input type="tel" id="phone" name="phone" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+
+      <label for="website">Website</label>
+      <input type="url" id="website" name="website" placeholder="https://example.com">
+    </fieldset>
+
+    <!-- Skills -->
+    <fieldset>
+      <legend>Skills & Preferences</legend>
+      <label>Skills</label>
+      <input type="checkbox" id="html" name="skills" value="HTML"> <label for="html">HTML</label>
+      <input type="checkbox" id="css" name="skills" value="CSS"> <label for="css">CSS</label>
+      <input type="checkbox" id="js" name="skills" value="JavaScript"> <label for="js">JavaScript</label>
+      <input type="checkbox" id="react" name="skills" value="React"> <label for="react">React</label>
+
+      <label for="department">Department</label>
+      <select id="department" name="department" required>
+        <optgroup label="Tech">
+          <option value="frontend">Front-End</option>
+          <option value="backend">Back-End</option>
+        </optgroup>
+        <optgroup label="Design">
+          <option value="uiux">UI/UX</option>
+          <option value="graphic">Graphic Design</option>
+        </optgroup>
+      </select>
+    </fieldset>
+
+    <!-- Upload -->
+    <fieldset>
+      <legend>Upload</legend>
+      <label for="resume">Resume (PDF)</label>
+      <input type="file" id="resume" name="resume" accept=".pdf">
+
+      <label for="avatar">Profile Picture</label>
+      <input type="file" id="avatar" name="avatar" accept="image/*">
+      <img id="avatarPreview" class="preview" src="#" alt="Preview" style="display:none;">
+    </fieldset>
+
+    <!-- Bio & Preferences -->
+    <fieldset>
+      <legend>Bio & Preferences</legend>
+      <label for="color">Favorite Color</label>
+      <input type="color" id="color" name="color" value="#0b79c1">
+
+      <label for="range">Satisfaction Level</label>
+      <input type="range" id="range" name="range" min="0" max="100" value="50" oninput="rangeOutput.value = range.value">
+      <output id="rangeOutput">50</output>%
+
+      <label for="bio">Short Bio</label>
+      <textarea id="bio" name="bio" rows="4" placeholder="Tell us about yourself"></textarea>
+    </fieldset>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div class="output" id="formOutput"></div>
+</main>
+
+<footer>
+  <p>© 2025 Himanshu Pandey</p>
+</footer>
+
+<script>
+  const form = document.getElementById('proForm');
+  const output = document.getElementById('formOutput');
+  const avatar = document.getElementById('avatar');
+  const avatarPreview = document.getElementById('avatarPreview');
+
+  // Dark/Light Mode Toggle
+  const darkToggle = document.getElementById('darkToggle');
+  darkToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+  });
+
+  // Avatar Preview
+  avatar.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if(file){
+      avatarPreview.src = URL.createObjectURL(file);
+      avatarPreview.style.display = 'block';
+    }
+  });
+
+  // Form Submit
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const data = new FormData(form);
+    let html = '<h2>Submitted Data</h2><table><tr>';
+    for (let key of data.keys()) html += `<th>${key}</th>`;
+    html += '</tr><tr>';
+    for (let value of data.values()) {
+      if(value instanceof File && value.name) html += `<td>${value.name}</td>`;
+      else html += `<td>${value}</td>`;
+    }
+    html += '</tr></table>';
+    output.innerHTML = html;
+  });
+</script>
+
+</body>
+</html>
